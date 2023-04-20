@@ -1,0 +1,25 @@
+<h2>TDs</h2>
+<% @tds.each do |td| %>
+  <p>
+    <%= td.issue %>, 
+    <%= td.istd %>:
+    <%= link_to 'Switch', { action: 'switch', id: td[:id], project_id: @project }, method: :post %>, 
+    <%= link_to 'Delete', td_path(project_id: @project, id: td), method: :delete %>
+  </p>
+<% end %>
+
+<%= form_with url: create_td_path, method: :post, local: true do |form| %>
+  <%= form.hidden_field :project_id, value: @project.id %>
+  <div class="istd_field">
+    <%= form.label :istd %>
+    <%= form.check_box :istd %>
+  </div>
+  <div class="project_id_field">
+    <%= form.label :issue_id %>
+    <%= form.text_field :issue_id, type: 'number'%>
+  </div>
+  <div class="actions">
+    <%= form.submit "Create TD" %>
+  </div>
+<% end %>
+
