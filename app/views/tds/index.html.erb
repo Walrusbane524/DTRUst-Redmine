@@ -1,6 +1,6 @@
 <h2>TDs</h2>
 
-<table>
+<table style="border: 1px solid; width : 100%;">
   <thead>
 
     <tr>
@@ -11,6 +11,8 @@
     	<th>Status</th>
     	<th>Subject</th>
     	<th>Assignee</th>
+        <th>Switch</th>
+        <th>Delete</th>
     </tr>
 
   </thead>
@@ -25,19 +27,12 @@
     	<th><%= td.issue.status %></th>
     	<th><%= td.issue.subject %></th>
     	<th><%= td.issue.assigned_to %></th>
+        <th><%= link_to 'Switch', { action: 'switch', id: td[:id], project_id: @project }, method: :post %></th>
+        <th><%= link_to 'Delete', td_path(project_id: @project, id: td), method: :delete %></th>
       </tr>
     <% end %>
-  </thead>
-
+  </tbody>
 </table>
-<% @tds.each do |td| %>
-  <p>
-    <%= td.issue %>, 
-    <%= td.istd %>:
-    <%= link_to 'Switch', { action: 'switch', id: td[:id], project_id: @project }, method: :post %>, 
-    <%= link_to 'Delete', td_path(project_id: @project, id: td), method: :delete %>
-  </p>
-<% end %>
 
 <%= form_with url: create_td_path, method: :post, local: true do |form| %>
   <%= form.hidden_field :project_id, value: @project.id %>
