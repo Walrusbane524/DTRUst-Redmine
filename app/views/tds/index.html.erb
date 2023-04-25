@@ -1,4 +1,35 @@
 <h2>TDs</h2>
+
+<table>
+  <thead>
+
+    <tr>
+    	<th>Issue ID</th>
+    	<th>TD ID</th>
+    	<th>Is TD</th>
+    	<th>Tracker</th>
+    	<th>Status</th>
+    	<th>Subject</th>
+    	<th>Assignee</th>
+    </tr>
+
+  </thead>
+
+  <tbody>
+    <% @tds.each do |td| %>
+      <tr>
+	<th><%= td.issue.id %></th>
+    	<th><%= td.id %></th>
+    	<th><%= td.istd %></th>
+    	<th><%= td.issue.tracker %></th>
+    	<th><%= td.issue.status %></th>
+    	<th><%= td.issue.subject %></th>
+    	<th><%= td.issue.assigned_to %></th>
+      </tr>
+    <% end %>
+  </thead>
+
+</table>
 <% @tds.each do |td| %>
   <p>
     <%= td.issue %>, 
