@@ -1,6 +1,13 @@
+<head>
+
+    <title>TDs</title>
+    <%= stylesheet_link_tag 'tds', plugin: 'tds' %>
+
+</head>
+
 <h2>TDs</h2>
 
-<table style="border: 1px solid; width : 100%;">
+<table>
   <thead>
 
     <tr>
@@ -20,7 +27,7 @@
   <tbody>
     <% @tds.each do |td| %>
       <tr>
-	<th><%= td.issue.id %></th>
+	    <th><%= td.issue.id %></th>
     	<th><%= td.id %></th>
     	<th><%= td.istd %></th>
     	<th><%= td.issue.tracker %></th>
@@ -48,4 +55,5 @@
     <%= form.submit "Create TD" %>
   </div>
 <% end %>
+
 
