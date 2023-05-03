@@ -18,7 +18,7 @@ class TdsController < ApplicationController
 
   def create
     td = Td.new
-    td.istd = params[:istd]
+    td.td_type = params[:td_type]
     td.issue_id = params[:issue_id]
 
     if td.save
