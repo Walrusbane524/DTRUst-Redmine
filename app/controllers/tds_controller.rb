@@ -5,6 +5,13 @@ class TdsController < ApplicationController
     @tds = Td.includes(:issue).all
   end
 
+  def td_info
+    @project = Project.find(params[:project_id])
+    @td = Td.includes(:issue).find(params[:id])
+
+    render :template => 'tds/td_info'
+  end
+
   def switch
     td = Td.find(params[:id])
     td.switch()

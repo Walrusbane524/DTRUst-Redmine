@@ -30,7 +30,7 @@
 	    <th><%= td.issue.id %></th>
     	<th><%= td.id %></th>
     	<th><%= td.td_type %></th>
-    	<th><%= td.issue.tracker %></th>
+    	<th><%= link_to td.issue.tracker, info_path(project_id: @project, id: td.id), method: :get %></th>
     	<th><%= td.issue.status %></th>
     	<th><%= td.issue.subject %></th>
     	<th><%= td.issue.assigned_to %></th>
@@ -55,5 +55,7 @@
     <%= form.submit "Create TD" %>
   </div>
 <% end %>
+
+
 
 
