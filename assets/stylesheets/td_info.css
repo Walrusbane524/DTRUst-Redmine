@@ -1,0 +1,31 @@
+.attributes {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #fffcda;
+}
+
+.attributes .left {
+    flex: 0 0 50%;
+    margin-right: 10px;
+    flex-direction: column;
+}
+.attributes .right {
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+.attribute{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.attribute .label{
+    flex: 0 0 50%;
+    font-weight: bold;
+}
+.attribute .value{
+    flex-grow: 1;
+}
