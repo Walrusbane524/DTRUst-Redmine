@@ -12,6 +12,12 @@ class TdsController < ApplicationController
     render :template => 'tds/td_info'
   end
 
+  def td_form
+    @project = Project.find(params[:project_id])
+    
+    render :template => 'tds/td_form'
+  end
+
   def switch
     td = Td.find(params[:id])
     td.switch()
@@ -29,11 +35,11 @@ class TdsController < ApplicationController
     td.issue_id = params[:issue_id]
 
     if td.save
-      flash[:notice] = 'TD created successfully.'
       redirect_to tds_path(project_id: params[:project_id])
+      flash[:notice] = 'TD created successfully.'
     else
+      redirect_to tds_path(project_id: params[:project_id])
       flash.now[:error] = 'TD creation failed.'
-      render :new
     end
   end
 

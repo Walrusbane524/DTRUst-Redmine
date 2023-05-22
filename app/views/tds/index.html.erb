@@ -40,21 +40,9 @@
     <% end %>
   </tbody>
 </table>
+<%= link_to 'New TD', form_path(project_id: @project), method: :get %>
 
-<%= form_with url: create_td_path, method: :post, local: true do |form| %>
-  <%= form.hidden_field :project_id, value: @project.id %>
-  <div class="type_field">
-    <%= form.label :td_type %>
-    <%= form.select :td_type, ['Requisitos', 'Testes', 'Usabilidade'] %>
-  </div>
-  <div class="project_id_field">
-    <%= form.label :issue_id %>
-    <%= form.text_field :issue_id, type: 'number'%>
-  </div>
-  <div class="actions">
-    <%= form.submit "Create TD" %>
-  </div>
-<% end %>
+
 
 
 

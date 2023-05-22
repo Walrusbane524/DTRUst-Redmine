@@ -3,6 +3,7 @@
 
 get 'tds', to: 'tds#index'
 get 'td_info', to: 'tds#td_info', as: 'info'
+get 'td_form', to: 'tds#td_form', as: 'form'
 post '/create_td', to: 'tds#create', as: 'create_td'
 post 'post/:id/switch', to: 'tds#switch'
 post '/projects/:project_id/issues/:issue_id/tds', to: 'tds#create', as: 'issue_tds'
