@@ -1,0 +1,22 @@
+.main{
+    width: 60%;
+}
+
+.field{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.field .label{
+    flex: 0 0 50%;
+    font-weight: bold;
+}
+.field .input{
+    flex-grow: 1;
+}
+.field .input select{
+    width: 50%;
+}
+

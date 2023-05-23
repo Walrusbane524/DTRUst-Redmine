@@ -8,13 +8,15 @@ class TdsController < ApplicationController
   def td_info
     @project = Project.find(params[:project_id])
     @td = Td.includes(:issue).find(params[:id])
+    
 
     render :template => 'tds/td_info'
   end
 
   def td_form
     @project = Project.find(params[:project_id])
-    
+    @issues = @project.issues
+
     render :template => 'tds/td_form'
   end
 

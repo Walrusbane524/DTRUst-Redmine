@@ -1,24 +1,36 @@
 <head>
 
     <title>New TD</title>
-
+    <%= stylesheet_link_tag 'td_form', plugin: 'tds' %>
 </head>
 
 <body>
-    <%= form_with url: create_td_path, method: :post, local: true do |form| %>
-        <%= form.hidden_field :project_id, value: @project.id %>
-        <div class="type_field">
-            <%= form.label :td_type %>
-            <%= form.select :td_type, ['Requisitos', 'Testes', 'Usabilidade'] %>
-        </div>
-        <div class="project_id_field">
-            <%= form.label :issue_id %>
-            <%= form.text_field :issue_id, type: 'number'%>
-        </div>
-        <div class="actions">
-            <%= form.submit "Create TD" %>
-        </div>
-    <% end %>
+    <h2> New TD </h2>
+    <div class="main">
+        <%= form_with url: create_td_path, method: :post, local: true do |form| %>
+            <%= form.hidden_field :project_id, value: @project.id %>
+            <div class="field">
+                <div class="field label">
+                    <%= form.label :td_type %>
+                </div>
+                <div class="field input">
+                    <%= form.select :td_type, ['Requisitos', 'Testes', 'Usabilidade'] %>
+                </div>
+            </div>
+            <div class="field">
+                <div class="field label">
+                    <%= form.label :issue_id %>
+                </div>
+                <div class="field input">
+                    <%= form.collection_select :issue_id, @issues, :id, lambda {|issue| "#{issue.subject} (##{issue.id})"}, prompt: 'Select an issue' %>
+                </div>            
+            </div>
+            <div class="actions">
+                <%= form.submit "Create TD" %>
+            </div>
+        <% end %>
+    </div>
+    
 </body>
 
 
