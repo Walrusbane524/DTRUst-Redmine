@@ -4,43 +4,57 @@
     <%= stylesheet_link_tag 'td_index', plugin: 'tds' %>
 
 </head>
+<body>
+    
+    <div class='new-issue'>
+        <%= link_to 'New TD', form_path(project_id: @project), method: :get %>
+    </div>
 
-<h2>TDs</h2>
+    <h2>TDs</h2>
 
-<table>
-  <thead>
+    <table>
+      <thead class='table-head'>
 
-    <tr>
-    	<th>Issue ID</th>
-    	<th>TD ID</th>
-    	<th>Type</th>
-    	<th>Tracker</th>
-    	<th>Status</th>
-    	<th>Subject</th>
-    	<th>Assignee</th>
-        <th>Switch</th>
-        <th>Delete</th>
-    </tr>
+        <tr>
+        	<th>Issue ID</th>
+        	<th>TD ID</th>
+        	<th>Type</th>
+        	<th>Tracker</th>
+        	<th>Status</th>
+        	<th>Subject</th>
+        	<th>Assignee</th>
+            <th>Switch</th>
+            <th>Delete</th>
+        </tr>
 
-  </thead>
+      </thead>
 
-  <tbody>
-    <% @tds.each do |td| %>
-      <tr>
-	    <th><%= td.issue.id %></th>
-    	<th><%= td.id %></th>
-    	<th><%= td.td_type %></th>
-    	<th><%= link_to td.issue.tracker, info_path(project_id: @project, id: td.id), method: :get %></th>
-    	<th><%= td.issue.status %></th>
-    	<th><%= td.issue.subject %></th>
-    	<th><%= td.issue.assigned_to %></th>
-        <th><%= link_to 'Switch', { action: 'switch', id: td[:id], project_id: @project }, method: :post %></th>
-        <th><%= link_to 'Delete', td_path(project_id: @project, id: td), method: :delete %></th>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= link_to 'New TD', form_path(project_id: @project), method: :get %>
+      <tbody class='table-body'>
+        <% cont = 1 %>
+        <% @tds.each do |td| %>
+           <% if cont == 2 %>
+                <tr style='background-color: #ffffff'>
+                <% cont = 1 %>
+           <% else %>
+                <tr style='background-color: #f6f7f8'>
+                <% cont = 2 %>
+           <% end %>
+	            <td><%= td.issue.id %></td>
+        	    <td><%= td.id %></td>
+        	    <td><%= td.td_type %></td>
+        	    <td><%= link_to td.issue.tracker, info_path(project_id: @project, id: td.id), method: :get %></td>
+        	    <td><%= td.issue.status %></td>
+        	    <td><%= td.issue.subject %></td>
+        	    <td><%= td.issue.assigned_to %></td>
+                <td><%= link_to 'Switch', { action: 'switch', id: td[:id], project_id: @project }, method: :post %></td>
+                <td><%= link_to 'Delete', td_path(project_id: @project, id: td), method: :delete %></td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+</body>
+
 
 
 
