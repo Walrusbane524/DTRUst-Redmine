@@ -7,7 +7,7 @@
 <body>
     
     <div class='new-issue'>
-        <%= link_to 'New TD', form_path(project_id: @project), method: :get %>
+        <%= link_to 'New TD', form_path(project_id: @project), method: :get, class: "icon icon-add" %>
     </div>
 
     <h2>TDs</h2>
@@ -46,7 +46,7 @@
         	    <td><%= td.issue.status %></td>
         	    <td><%= td.issue.subject %></td>
         	    <td><%= td.issue.assigned_to %></td>
-                <td><%= link_to 'Switch', { action: 'switch', id: td[:id], project_id: @project }, method: :post %></td>
+                <td><%= link_to 'Switch', { action: 'switch', id: td[:id], project_id: @project , reloadto: "tds"}, method: :post %></td>
                 <td><%= link_to 'Delete', td_path(project_id: @project, id: td), method: :delete %></td>
             </tr>
         <% end %>

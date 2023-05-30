@@ -5,83 +5,94 @@
 
 </head>
 
+<div class='buttons'>
+    
+    <%= link_to 'Switch', { action: 'switch', id: @td.id, project_id: @project, reloadto: "info" }, method: :post, class: "icon icon-edit" %>
+
+    <%= link_to 'Delete', td_path(project_id: @project, id: @td.id), method: :delete, class: "icon icon-del" %>
+    
+</div>
+
 <h2><%= @td.td_type %> #<%= @td.id %></h2>
 
-<h3>Issue: <%= @td.issue.subject %></h3>
+<div class='main'>
 
-<strong>Description:</strong>
-<p>
-    <%= @td.issue.description %>
-</p>
+    <h3>Issue: <%= @td.issue.subject %></h3>
+    <% if @td.issue.description != ''%>
+        <p>
+            <%= @td.issue.description %>
+        </p>
+    <% end %>
 
-<div class="attributes">
-    <div class="attributes left">
-        <div class="attribute">
-            <div class="label">Td type: </div>
-            <div class="value"><%= @td.td_type%></div>
-        </div>
-        <div class="attribute">
-            <div class="label">Status: </div>
-            <div class="value"><%= @td.issue.status%></div>
-        </div>
-        <div class="attribute">
-            <div class="label">Priority: </div>
-            <div class="value"><%= @td.issue.priority%></div>
-        </div>
-        <div class="attribute">
-            <div class="label">Assignee: </div>
-            <div class="value">
-                <% if @td.issue.assigned_to %>
-                    <%= @td.issue.assigned_to.name %>
-                <% else %>
-                    -
-                <% end %>
+    <div class="attributes">
+        <div class="attributes left">
+            <div class="attribute">
+                <div class="label">Td type: </div>
+                <div class="value"><%= @td.td_type%></div>
+            </div>
+            <div class="attribute">
+                <div class="label">Status: </div>
+                <div class="value"><%= @td.issue.status%></div>
+            </div>
+            <div class="attribute">
+                <div class="label">Priority: </div>
+                <div class="value"><%= @td.issue.priority%></div>
+            </div>
+            <div class="attribute">
+                <div class="label">Assignee: </div>
+                <div class="value">
+                    <% if @td.issue.assigned_to %>
+                        <%= @td.issue.assigned_to.name %>
+                    <% else %>
+                        -
+                    <% end %>
+                </div>
+            </div>
+            <div class="attribute">
+                <div class="label">Category: </div>
+                <div class="value">
+                    <% if @td.issue.category %>
+                        <%= @td.issue.category.name %>
+                    <% else %>
+                        -
+                    <% end %>
+                </div>
             </div>
         </div>
-        <div class="attribute">
-            <div class="label">Category: </div>
-            <div class="value">
-                <% if @td.issue.category %>
-                    <%= @td.issue.category.name %>
-                <% else %>
-                    -
-                <% end %>
+        <div class="attributes right">
+            <div class="attribute">
+                <div class="label">Start date: </div>
+                <div class="value">
+                    <% if @td.issue.start_date %>
+                        <%= @td.issue.start_date.to_s(:long)%>
+                    <% else %>
+                        -
+                    <% end %>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="attributes right">
-        <div class="attribute">
-            <div class="label">Start date: </div>
-            <div class="value">
-                <% if @td.issue.start_date %>
-                    <%= @td.issue.start_date.to_s(:long)%>
-                <% else %>
-                    -
-                <% end %>
+            <div class="attribute">
+                <div class="label">Due date: </div>
+                <div class="value">
+                    <% if @td.issue.due_date %>
+                        <%= @td.issue.due_date.to_s(:long)%>
+                    <% else %>
+                        -
+                    <% end %>
+                </div>
             </div>
-        </div>
-        <div class="attribute">
-            <div class="label">Due date: </div>
-            <div class="value">
-                <% if @td.issue.due_date %>
-                    <%= @td.issue.due_date.to_s(:long)%>
-                <% else %>
-                    -
-                <% end %>
+            <div class="attribute">
+                <div class="label">% Done: </div>
+                <div class="value"><%= @td.issue.done_ratio%>%</div>
             </div>
-        </div>
-        <div class="attribute">
-            <div class="label">% Done: </div>
-            <div class="value"><%= @td.issue.done_ratio%>%</div>
-        </div>
-        <div class="attribute">
-            <div class="label">Estimated time: </div>
-            <div class="value">
-                <% if @td.issue.estimated_hours %>
-                    <%= @td.issue.estimated_hours %> hours
-                <% else %>
-                    -
-                <% end %>
+            <div class="attribute">
+                <div class="label">Estimated time: </div>
+                <div class="value">
+                    <% if @td.issue.estimated_hours %>
+                        <%= @td.issue.estimated_hours %> hours
+                    <% else %>
+                        -
+                    <% end %>
+                </div>
             </div>
         </div>
     </div>

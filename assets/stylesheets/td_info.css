@@ -1,3 +1,20 @@
+.main{
+    background: #ffffdd;
+    padding: 6px;
+    margin-bottom: 6px;
+    border: 1px solid #d7d7d7;
+    border-radius: 3px;
+}
+
+.buttons{
+    float: right;
+    white-space: nowrap;
+    line-height: 1.4em;
+    margin: 5px 0px;
+    padding-left: 10px;
+    font-size: 0.9em;
+}
+
 .attributes {
     display: flex;
     justify-content: space-between;

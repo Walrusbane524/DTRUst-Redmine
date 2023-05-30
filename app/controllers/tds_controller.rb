@@ -28,7 +28,11 @@ class TdsController < ApplicationController
     else
       flash[:error] = "Switch mal-sucedido."
     end
-    redirect_to tds_path(project_id: params[:project_id])
+    if params[:reloadto] == "tds"
+        redirect_to tds_path(project_id: params[:project_id])
+    else
+        redirect_to info_path(project_id: params[:project_id], id: params[:id])
+    end
   end
 
   def create
@@ -48,7 +52,7 @@ class TdsController < ApplicationController
   def destroy
     @td = Td.find(params[:id])
     @td.destroy
-
+    
     redirect_to tds_path(project_id: params[:project_id])
   end
 
