@@ -20,18 +20,28 @@ class TdsController < ApplicationController
     render :template => 'tds/td_form'
   end
 
-  def switch
+  def edit
+    @project = Project.find(params[:project_id])    
+    @td = Td.find(params[:id])
+    @reload_to = params[:reload_to]
+    
+    render :template => 'tds/edit_td'
+  end
+
+  def save_edit
     td = Td.find(params[:id])
-    td.switch()
-    if td.save
-      flash[:notice] = 'Switch bem-sucedido.'
-    else
-      flash[:error] = "Switch mal-sucedido."
-    end
-    if params[:reloadto] == "tds"
+    td.set_type(params[:td_type])
+
+    if params[:reload_to] == "tds"
         redirect_to tds_path(project_id: params[:project_id])
     else
         redirect_to info_path(project_id: params[:project_id], id: params[:id])
+    end
+
+    if td.save
+      flash[:notice] = 'Edição salva com sucesso.'
+    else
+      flash[:error] = "Erro ao salvar edição."
     end
   end
 
@@ -40,11 +50,10 @@ class TdsController < ApplicationController
     td.td_type = params[:td_type]
     td.issue_id = params[:issue_id]
 
+    redirect_to tds_path(project_id: params[:project_id])
     if td.save
-      redirect_to tds_path(project_id: params[:project_id])
       flash[:notice] = 'TD created successfully.'
     else
-      redirect_to tds_path(project_id: params[:project_id])
       flash.now[:error] = 'TD creation failed.'
     end
   end

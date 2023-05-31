@@ -23,7 +23,7 @@
         	<th>Status</th>
         	<th>Subject</th>
         	<th>Assignee</th>
-            <th>Switch</th>
+            <th>Edit</th>
             <th>Delete</th>
         </tr>
 
@@ -41,12 +41,12 @@
            <% end %>
 	            <td><%= td.issue.id %></td>
         	    <td><%= td.id %></td>
-        	    <td><%= td.td_type %></td>
-        	    <td><%= link_to td.issue.tracker, info_path(project_id: @project, id: td.id), method: :get %></td>
+        	    <td><%= link_to td.td_type, info_path(project_id: @project, id: td.id), method: :get %></td>
+        	    <td><%= td.issue.tracker %></td>
         	    <td><%= td.issue.status %></td>
         	    <td><%= td.issue.subject %></td>
         	    <td><%= td.issue.assigned_to %></td>
-                <td><%= link_to 'Switch', { action: 'switch', id: td[:id], project_id: @project , reloadto: "tds"}, method: :post %></td>
+                <td><%= link_to 'Edit', edit_td_path(id: td[:id], project_id: @project, reload_to: "tds"), method: :get %></td>
                 <td><%= link_to 'Delete', td_path(project_id: @project, id: td), method: :delete %></td>
             </tr>
         <% end %>

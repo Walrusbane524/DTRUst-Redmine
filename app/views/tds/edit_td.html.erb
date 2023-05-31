@@ -1,0 +1,35 @@
+<head>
+    <title>Edit TD</title>
+    <%= stylesheet_link_tag 'edit_td', plugin: 'tds' %>
+
+</head>
+
+<body>
+
+    <h2> <%= @td.td_type%> #<%= @td.id%> </h2>
+    <div class="main">
+        <%= form_with url: save_edit_path, method: :post, local: true do |form| %>
+            <%= form.hidden_field :project_id, value: @project.id %>
+            <%= form.hidden_field :id, value: @td.id %>
+            <%= form.hidden_field :reload_to, value: @reload_to %>
+            <div class="field">
+                <div class="field label">
+                    <%= form.label :td_type %>
+                </div>
+                <div class="field input">
+                    <%= form.select :td_type, ['Requisitos', 'Testes', 'Usabilidade'] %>
+                </div>
+            </div>
+            </div>
+            <div class="actions">
+                <%= form.submit "Confirm" %>
+            </div>
+        <% end %>
+    </div>
+    
+</body>
+
+
+
+
+

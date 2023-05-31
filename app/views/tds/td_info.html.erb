@@ -6,8 +6,7 @@
 </head>
 
 <div class='buttons'>
-    
-    <%= link_to 'Switch', { action: 'switch', id: @td.id, project_id: @project, reloadto: "info" }, method: :post, class: "icon icon-edit" %>
+    <%= link_to 'Edit', edit_td_path(project_id: @project, id: @td.id, reload_to: "info"), method: :get, class: "icon icon-edit" %>
 
     <%= link_to 'Delete', td_path(project_id: @project, id: @td.id), method: :delete, class: "icon icon-del" %>
     

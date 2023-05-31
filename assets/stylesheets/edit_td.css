@@ -1,0 +1,30 @@
+.main{
+    width: 60%;
+    padding: 6px;
+    margin-bottom: 10px;
+    background-color: #f6f6f6;
+    color: #505050;
+    line-height: 1.5em;
+    border: 1px solid #e4e4e4;
+    word-wrap: break-word;
+    border-radius: 3px;
+}
+
+.field{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.field .label{
+    flex: 0 0 50%;
+    font-weight: bold;
+}
+.field .input{
+    flex-grow: 1;
+}
+.field .input select{
+    width: 50%;
+}
+
