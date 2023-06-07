@@ -9,7 +9,6 @@ class TdsController < ApplicationController
     @project = Project.find(params[:project_id])
     @td = Td.includes(:issue).find(params[:id])
     
-
     render :template => 'tds/td_info'
   end
 
