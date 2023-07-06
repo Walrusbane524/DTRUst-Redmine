@@ -1,11 +1,11 @@
 Redmine::Plugin.register :tds do
-  name 'Tds plugin'
-  author 'Guilherme'
+  name 'Technical Debt Plugin'
+  author 'Guilherme de Menezes Furtado'
   description 'Plugin de gerenciamento de Dívidas Técnicas para o Redmine'
-  version '0.1.0'
-  url 'http://example.com/path/to/plugin'
-  author_url 'http://example.com/about'
-  menu :project_menu, :tds, { controller: 'tds', action: 'index' }, caption: 'TDs', after: :activity, param: :project_id
+  version '1.0.0'
+  url 'https://github.com/Walrusbane524/Redmine-Technical-Debt-Plugin'
+  author_url 'https://github.com/Walrusbane524'
+  menu :project_menu, :tds, { controller: 'tds', action: 'index' }, caption: 'TechDebt', after: :activity, param: :project_id
   
   project_module :tds do
     permission :view_tds, tds: :index
