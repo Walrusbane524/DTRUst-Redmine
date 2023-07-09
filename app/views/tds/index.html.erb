@@ -6,9 +6,11 @@
 </head>
 <body>
     
-    <div class='new-issue'>
-        <%= link_to 'New TD', form_path(project_id: @project), method: :get, class: "icon icon-add" %>
-    </div>
+    <% if User.current.allowed_to?(:create_tds, @project) %>
+        <div class='new-issue'>
+            <%= link_to 'New TD', form_path(project_id: @project), method: :get, class: "icon icon-add" %>
+        </div>
+    <% end %>
 
     <h2>TDs</h2>
 
@@ -23,8 +25,12 @@
         	<th>Status</th>
         	<th>Subject</th>
         	<th>Assignee</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <% if User.current.allowed_to?(:edit_tds, @project) %>
+                <th>Edit</th>
+            <% end %>
+            <% if User.current.allowed_to?(:delete_tds, @project) %>
+                <th>Delete</th>
+            <% end %>
         </tr>
 
       </thead>
@@ -46,13 +52,16 @@
         	    <td><%= td.issue.status %></td>
         	    <td><%= td.issue.subject %></td>
         	    <td><%= td.issue.assigned_to %></td>
-                <td><%= link_to 'Edit', edit_td_path(id: td[:id], project_id: @project, reload_to: "tds"), method: :get %></td>
-                <td><%= link_to 'Delete', td_path(project_id: @project, id: td), method: :delete %></td>
-            </tr>
+                <% if User.current.allowed_to?(:edit_tds, @project) %>
+                    <td><%= link_to 'Edit', edit_td_path(id: td[:id], project_id: @project, reload_to: "tds"), method: :get %></td>
+                <% end %>
+                <% if User.current.allowed_to?(:delete_tds, @project) %>
+                    <td><%= link_to 'Delete', td_path(project_id: @project, id: td), method: :delete %></td>
+                <% end %>
+                </tr>
         <% end %>
       </tbody>
     </table>
-
 </body>
 
 
