@@ -6,9 +6,13 @@
 </head>
 
 <div class='buttons'>
-    <%= link_to 'Edit', edit_td_path(project_id: @project, id: @td.id, reload_to: "info"), method: :get, class: "icon icon-edit" %>
-
-    <%= link_to 'Delete', td_path(project_id: @project, id: @td.id), method: :delete, class: "icon icon-del" %>
+    <% if User.current.allowed_to?(:edit_tds, @project) %>
+        <%= link_to 'Edit', edit_td_path(project_id: @project, id: @td.id, reload_to: "info"), method: :get, class: "icon icon-edit" %>
+    <% end %>
+    
+    <% if User.current.allowed_to?(:delete_tds, @project) %>
+        <%= link_to 'Delete', td_path(project_id: @project, id: @td.id), method: :delete, class: "icon icon-del" %>
+    <% end %>
     
 </div>
 
