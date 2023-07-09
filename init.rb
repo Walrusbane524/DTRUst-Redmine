@@ -9,8 +9,8 @@ Redmine::Plugin.register :tds do
   
   project_module :tds do
     permission :view_tds, tds: :index
-    permission :destroy_td, tds: :destroy
-    permission :switch_td, tds: :switch
-    permission :create_tds, tds: :create
+    permission :delete_tds, tds: :destroy
+    permission :edit_tds, tds: :edit
+    permission :create_tds, tds: :td_form
   end
 end
