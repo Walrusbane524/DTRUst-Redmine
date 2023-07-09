@@ -23,7 +23,7 @@
                     <%= form.label :issue_id %>
                 </div>
                 <div class="field input">
-                    <%= form.collection_select :issue_id, @issues, :id, lambda {|issue| "#{issue.subject} (##{issue.id})"}, prompt: 'Select an issue' %>
+                    <%= form.collection_select :issue_id, @issues, :id, lambda {|issue| "#{issue.subject} (##{issue.id})"} %>
                 </div>            
             </div>
             <div class="actions">
@@ -31,7 +31,6 @@
             </div>
         <% end %>
     </div>
-    
 </body>
 
 
