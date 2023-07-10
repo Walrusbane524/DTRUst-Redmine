@@ -1,4 +1,4 @@
-# Redmine-Technical-Debt-Plugin
+# DTrust-Redmine
 A Technical Debt management plugin for Redmine.
 
 ## Instalation:
